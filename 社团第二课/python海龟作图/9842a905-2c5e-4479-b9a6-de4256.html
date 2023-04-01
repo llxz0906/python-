@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="zh-CN">
+ <head> 
+  <meta charset="utf-8"> 
+  <link rel="canonical" href="https://blog.csdn.net/xw1680/article/details/111938825"> 
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"> 
+  <meta name="renderer" content="webkit"> 
+  <meta name="force-rendering" content="webkit"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+  <meta name="report" content="{&quot;pid&quot;: &quot;blog&quot;, &quot;spm&quot;:&quot;1001.2101&quot;}"> 
+  <meta name="referrer" content="always"> 
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <link rel="alternate" media="handheld" href="#"> 
+  <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848"> 
+  <meta name="applicable-device" content="pc"> 
+  <link href="https://g.csdnimg.cn/static/logo/favicon32.ico" rel="shortcut icon" type="image/x-icon"> 
+  <title>全网最细海龟 (turtle) 画图讲解 (三)：设置画笔样式_Amo Xiang的博客-CSDN博客_python turtle改变画笔形状</title>  
+  <meta name="keywords" content="python turtle改变画笔形状"> 
+  <meta name="csdn-baidu-search" content="{&quot;autorun&quot;:true,&quot;install&quot;:true,&quot;keyword&quot;:&quot;python turtle改变画笔形状&quot;}"> 
+  <meta name="description" content="目录1. 设置画笔样式1.1 画笔初始形状1.2 设置画笔颜色1.3 落笔与抬笔1.4 设置线条粗细1.5 隐藏与显示海龟光标1.6 设置画笔的速度最近博主在 CSDN 上看到许多关于海龟画图的案例，如画圣诞树、五角星等，但是都是直接给出了源码以及一些简单的注释，没有对其详细的说明，会让很多初学者迷糊很久，故这里博主详细地对 turtle 模块中的方法进行详解，让广大博友能够做到自由画图。海龟绘图是 Python 内置的一个比较有趣的模块，模块名称为 turtle。它最初源于 20世纪60年代 的 Lo">  
+  <link rel="stylesheet" type="text/css" href="https://csdnimg.cn/release/blogv2/dist/pc/css/detail_enter-dbcfbb1ed8.min.css">   
+  <link rel="stylesheet" type="text/css" href="https://csdnimg.cn/release/blogv2/dist/pc/themesSkin/skin-cookblue/skin-cookblue-d114b9ac23.min.css">     
+  <link rel="stylesheet" type="text/css" href="https://csdnimg.cn/public/sandalstrap/1.4/css/sandalstrap.min.css"> 
+  <style>.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%} .MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%} .MathJax .MJX-monospace {font-family: monospace} .MathJax .MJX-sans-serif {font-family: sans-serif} #MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none} .MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0} .MathJax:focus, body :focus .MathJax {display: inline-table} .MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important} .MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none} img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important} .MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none} .MathJax nobr {white-space: nowrap!important} .MathJax img {display: inline!important; float: none!important} .MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none} .MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden} .MathJax_Processed {display: none!important} .MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none} .MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none} .MathJax_LineBox {display: table!important} .MathJax_LineBox span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0} .MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)} .MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent} #MathJax_Tooltip * {filter: none; opacity: 1; background: transparent} @font-face {font-family: MathJax_Main; src: url('https://csdnimg.cn/release/blog_mathjax/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff?V=2.7.2') format('woff'), url('https://csdnimg.cn/release/blog_mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf?V=2.7.2') format('opentype')} @font-face {font-family: MathJax_Main-bold; src: url('https://csdnimg.cn/release/blog_mathjax/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff?V=2.7.2') format('woff'), url('https://csdnimg.cn/release/blog_mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf?V=2.7.2') format('opentype')} @font-face {font-family: MathJax_Main-italic; src: url('https://csdnimg.cn/release/blog_mathjax/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff?V=2.7.2') format('woff'), url('https://csdnimg.cn/release/blog_mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf?V=2.7.2') format('opentype')} @font-face {font-family: MathJax_Math-italic; src: url('https://csdnimg.cn/release/blog_mathjax/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff?V=2.7.2') format('woff'), url('https://csdnimg.cn/release/blog_mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf?V=2.7.2') format('opentype')} @font-face {font-family: MathJax_Caligraphic; src: url('https://csdnimg.cn/release/blog_mathjax/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff?V=2.7.2') format('woff'), url('https://csdnimg.cn/release/blog_mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf?V=2.7.2') format('opentype')} @font-face {font-family: MathJax_Size1; src: url('https://csdnimg.cn/release/blog_mathjax/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff?V=2.7.2') format('woff'), url('https://csdnimg.cn/release/blog_mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf?V=2.7.2') format('opentype')} @font-face {font-family: MathJax_Size2; src: url('https://csdnimg.cn/release/blog_mathjax/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff?V=2.7.2') format('woff'), url('https://csdnimg.cn/release/blog_mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf?V=2.7.2') format('opentype')} @font-face {font-family: MathJax_Size3; src: url('https://csdnimg.cn/release/blog_mathjax/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff?V=2.7.2') format('woff'), url('https://csdnimg.cn/release/blog_mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf?V=2.7.2') format('opentype')} @font-face {font-family: MathJax_Size4; src: url('https://csdnimg.cn/release/blog_mathjax/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff?V=2.7.2') format('woff'), url('https://csdnimg.cn/release/blog_mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf?V=2.7.2') format('opentype')} .MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}</style>  
+ </head> 
+ <body class="nodata " style="">    
+  <link rel="stylesheet" href="https://csdnimg.cn/release/blogv2/dist/pc/css/blog_code-01256533b5.min.css"> 
+  <link rel="stylesheet" href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/chart-3456820cac.css">  
+  <div class="main_father clearfix d-flex justify-content-center mainfather-concision" style="height:100%;"> 
+   <div class="container clearfix container-concision" id="mainBox">  
+    <main style="width:100%">  
+     <div class="blog-content-box"> 
+      <div class="article-header-box"> 
+       <div class="article-header"> 
+        <div class="article-title-box"> 
+         <h1 class="title-article" id="articleContentId">全网最细海龟 (turtle) 画图讲解 (三)：设置画笔样式</h1> 
+        </div> 
+        <div class="article-info-box"> 
+         <div class="article-bar-top"> 
+          <img class="article-type-img" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2Foriginal.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+          <div class="bar-content"> 
+           <a class="follow-nickName vip-name" href="https://blog.csdn.net/xw1680" target="_blank" rel="noopener">Amo Xiang</a> 
+           <img class="article-time-img article-heard-img" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FnewCurrentTime2.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+           <span class="time">于&nbsp;2020-12-30 00:55:19&nbsp;发布</span> 
+           <img class="article-read-img article-heard-img" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FarticleReadEyes2.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+           <span class="read-count">14327</span> 
+           <a id="blog_detail_zk_collection" class="un-collection" data-report-click="{&quot;mod&quot;:&quot;popu_823&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4232&quot;,&quot;ab&quot;:&quot;new&quot;}"> <img class="article-collect-img article-heard-img un-collect-status isdefault" style="display:inline-block" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FtobarCollect2.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> <img class="article-collect-img article-heard-img collect-status isactive" style="display:none" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FtobarCollectionActive2.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> <span class="name">收藏</span> <span class="get-collection"> 66 </span> </a> 
+          </div> 
+         </div> 
+         <div class="blog-tags-box"> 
+          <div class="tags-box artic-tag-box"> 
+           <span class="label">分类专栏：</span> 
+           <a class="tag-link" href="https://blog.csdn.net/xw1680/category_11669360.html" target="_blank" rel="noopener">全网最细海龟 (turtle) 画图讲解</a> 
+           <span class="label">文章标签：</span> 
+           <a data-report-click="{&quot;mod&quot;:&quot;popu_626&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4223&quot;,&quot;strategy&quot;:&quot;可视化&quot;,&quot;ab&quot;:&quot;new&quot;,&quot;extra&quot;:&quot;{\&quot;searchword\&quot;:\&quot;可视化\&quot;}&quot;}" class="tag-link" href="https://so.csdn.net/so/search/s.do?q=%E5%8F%AF%E8%A7%86%E5%8C%96&amp;t=blog&amp;o=vip&amp;s=&amp;l=&amp;f=&amp;viparticle=" target="_blank" rel="noopener">可视化</a> 
+           <a data-report-click="{&quot;mod&quot;:&quot;popu_626&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4223&quot;,&quot;strategy&quot;:&quot;画图&quot;,&quot;ab&quot;:&quot;new&quot;,&quot;extra&quot;:&quot;{\&quot;searchword\&quot;:\&quot;画图\&quot;}&quot;}" class="tag-link" href="https://so.csdn.net/so/search/s.do?q=%E7%94%BB%E5%9B%BE&amp;t=blog&amp;o=vip&amp;s=&amp;l=&amp;f=&amp;viparticle=" target="_blank" rel="noopener">画图</a> 
+           <a data-report-click="{&quot;mod&quot;:&quot;popu_626&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4223&quot;,&quot;strategy&quot;:&quot;turtle&quot;,&quot;ab&quot;:&quot;new&quot;,&quot;extra&quot;:&quot;{\&quot;searchword\&quot;:\&quot;turtle\&quot;}&quot;}" class="tag-link" href="https://so.csdn.net/so/search/s.do?q=turtle&amp;t=blog&amp;o=vip&amp;s=&amp;l=&amp;f=&amp;viparticle=" target="_blank" rel="noopener">turtle</a> 
+           <a data-report-click="{&quot;mod&quot;:&quot;popu_626&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4223&quot;,&quot;strategy&quot;:&quot;python&quot;,&quot;ab&quot;:&quot;new&quot;,&quot;extra&quot;:&quot;{\&quot;searchword\&quot;:\&quot;python\&quot;}&quot;}" class="tag-link" href="https://so.csdn.net/so/search/s.do?q=python&amp;t=blog&amp;o=vip&amp;s=&amp;l=&amp;f=&amp;viparticle=" target="_blank" rel="noopener">python</a> 
+          </div> 
+         </div> 
+         <div class="slide-content-box"> 
+          <div class="article-copyright"> 
+           <div class="creativecommons">
+             版权声明：本文为博主原创文章，遵循
+            <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> CC 4.0 BY-SA </a>版权协议，转载请附上原文出处链接和本声明。 
+           </div> 
+           <div class="article-source-link">
+             本文链接：
+            <a href="https://blog.csdn.net/xw1680/article/details/111938825" target="_blank">https://blog.csdn.net/xw1680/article/details/111938825</a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="operating"> 
+          <a class="href-article-edit slide-toggle">版权</a> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div id="blogHuaweiyunAdvert"></div> 
+      <div id="blogColumnPayAdvert"> 
+       <div class="column-group"> 
+        <div class="column-group-item column-group0 column-group-item-one"> 
+         <div class="item-l"> 
+          <a class="item-target" href="https://blog.csdn.net/xw1680/category_11669360.html" target="_blank" title="全网最细海龟 (turtle) 画图讲解" data-report-view="{&quot;spm&quot;:&quot;1001.2101.3001.6332&quot;}" data-report-click="{&quot;spm&quot;:&quot;1001.2101.3001.6332&quot;}"> <img class="item-target" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2Fb7e1ebd061994c9b8b08efde1b62b59d.png%3Fx-oss-process%3Dimage%2Fresize%2Cm_fixed%2Ch_224%2Cw_224&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> <span class="title item-target"> <span> <span class="tit">全网最细海龟 (turtle) 画图讲解</span> <span class="dec">专栏收录该内容</span> </span> </span> </a> 
+         </div> 
+         <div class="item-m"> 
+          <span>11 篇文章</span> 
+          <span>12 订阅</span> 
+          <span class="old-add-new-box"> <span class="price">¥39.90</span> <span class="oldprice">¥99.00</span> </span> 
+         </div> 
+         <div class="item-r"> 
+          <a class="item-target article-column-subscribe" style="display:inline-block" data-type="true" data-id="11669360"> 会员已订阅 </a> 
+          <a style="display:none" class="item-target column-studyvip-free studyvip-unsubscribe column-studyvip-ajax" data-type="false" data-id="11669360"> <img class="item-target column-studyvip-icon" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fcomponents%2Fimg%2FstudyVipIcon.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825">会员免费订 </a> 
+          <a class="item-target column-studyvip-discount column-studyvip-pass" data-report-view="{&quot;spm&quot;:&quot;1001.2015.3001.8590&quot;}" data-report-click="{&quot;spm&quot;:&quot;1001.2015.3001.8590&quot;}">8折续费 </a> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="learning_the_member_box"> 
+       <a href="https://www.csdn.net/vip?utm_source=bkzl_cjhy_ckqy" target="_blank"> 
+        <div class="left">
+         <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FiconVIpCrown.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="">
+         <span>您已是超级会员，正在免费阅读会员专享内容</span>
+        </div> 
+        <div class="right">
+         <span>查看更多超级会员权益</span>
+         <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fcomponents%2Fimg%2FvipIconArrowLeftWhite.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="">
+        </div> </a> 
+      </div> 
+      <article class="baidu_pl"> 
+       <div id="article_content" class="article_content clearfix"> 
+        <link rel="stylesheet" href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/ck_htmledit_views-6e43165c0a.css"> 
+        <div id="content_views" class="markdown_views prism-atom-one-light"> 
+         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> 
+          <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path> 
+         </svg> 
+         <p></p> 
+         <div class="toc"> 
+          <h3>目录</h3> 
+          <ul>
+           <li><a href="#1__5">1. 设置画笔样式</a></li>
+           <li>
+            <ul>
+             <li><a href="#11__7">1.1 画笔初始形状</a></li>
+             <li><a href="#12__37">1.2 设置画笔颜色</a></li>
+             <li><a href="#13__78">1.3 落笔与抬笔</a></li>
+             <li><a href="#14__128">1.4 设置线条粗细</a></li>
+             <li><a href="#15__154">1.5 隐藏与显示海龟光标</a></li>
+             <li><a href="#16__174">1.6 设置画笔的速度</a></li>
+            </ul> </li>
+          </ul> 
+         </div> 
+         <p></p> 
+         <p>最近博主在 CSDN 上看到许多关于海龟画图的案例，如画圣诞树、五角星等，但是都是直接给出了源码以及一些简单的注释，没有对其详细的说明，会让很多初学者迷糊很久，故这里博主详细地对 turtle 模块中的方法进行详解，让广大博友能够做到自由画图。</p> 
+         <p>海龟绘图是 Python 内置的一个比较有趣的模块，模块名称为 turtle。它最初源于 20世纪60年代 的 Logo 语言，之后成为了 Python 的内置模块。海龟绘图提供了一些简单的绘图方法，可以根据编写的控制指令(代码)，让一个 “海龟” 在屏幕上来回移动，而且可以在它爬行的路径上绘制图形。通过海龟绘图，不仅可以在屏幕上绘制图形，还可以看到整个绘制过程。另外，海龟绘图对初学者十分友好，它能够轻松地编写出很多有趣的实例。</p> 
+         <h1><a id="1__5"></a>1. 设置画笔样式</h1> 
+         <p>在窗口中，坐标原点(0,0) 的位置默认有一个指向 <em>x</em> 轴正方向的箭头(或小乌龟)，这就相当于我们的画笔。在海龟绘图中，通过画笔可以控制线条的粗细、颜色、运动的速度以及是否显示光标等样式。下面分别进行介绍。</p> 
+         <h2><a id="11__7"></a>1.1 画笔初始形状</h2> 
+         <p>在海龟绘图中，默认的画笔形状为箭头，可以通过 shape() 方法修改为其他样式。shape() 方法的语法如下：</p> 
+         <pre><code class="prism language-python"><span class="token keyword">def</span> <span class="token function">shape</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+</code></pre> 
+         <p>其中，name 参数为可选参数，用于指定形状名，如没有指定形状名，则返回当前的形状名。常用的形状名有 arrow(向右的等腰三角形)、turtle(海龟)、circle(实心圆)、square(实心正方形)、triangle(向右的正三角形) 或 classic(箭头)等 6 种，如下图所示：<br> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F20201229231202163.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="在这里插入图片描述"><br> 画笔的样式设置后，如果不改变为其他状态，那么会一直有效。例如，先获取当前的画笔形状，然后将画笔形状修改为实心圆，再获取画笔的形状，代码如下：</p> 
+         <pre><code class="prism language-python"><span class="token comment"># -*- coding: UTF-8 -*-</span>
+<span class="token triple-quoted-string string">"""
+@author:AmoXiang
+@file:3.设置画笔样式.py
+@time:2020/12/29
+"""</span>
+
+<span class="token keyword">from</span> turtle <span class="token keyword">import</span> <span class="token operator">*</span>  <span class="token comment"># 导入turtle的全部定义</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"修改前: {shape()}"</span><span class="token punctuation">)</span>  <span class="token comment"># 获取当前的画笔形状</span>
+shape<span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"circle"</span><span class="token punctuation">)</span>  <span class="token comment"># 设置当前的画笔形状为实心圆</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"修改后: {shape()}"</span><span class="token punctuation">)</span>  <span class="token comment"># 获取修改后的画笔形状</span>
+done<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 海龟绘图程序的结束语句（开始主程序）</span>
+</code></pre> 
+         <p>程序运行结果如下：<br> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F2020122923261339.png%3Fx-oss-process%3Dimage%2Fwatermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h3MTY4MA%3D%3D%2Csize_16%2Ccolor_FFFFFF%2Ct_70&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="在这里插入图片描述"><br> 在海龟绘图中，一个画笔形状会跟随海龟的光标移动。如果想要在海龟移动过的某个位置留下一个海龟形状，可以使用 stamp() 方法在当前光标处印制一个印章，该印章不会跟随海龟光标移动。例如，想要在当前光标位置印制一枚印章，可以使用下面的代码：</p> 
+         <pre><code class="prism language-python">t <span class="token operator">=</span> Pen<span class="token punctuation">(</span><span class="token punctuation">)</span>
+stampid <span class="token operator">=</span> t<span class="token punctuation">.</span>stamp<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre> 
+         <h2><a id="12__37"></a>1.2 设置画笔颜色</h2> 
+         <p>在海龟绘图中，画笔的默认颜色为黑色，可以使用 pencolor() 或者 color() 方法修改画笔的颜色。下面分别进行介绍。</p> 
+         <ol>
+          <li> <p>pencolor() 方法：用于修改画笔的颜色，同时画笔形状会添加一圈所指定颜色的描述，但是内部还是默认的黑色。pencolor() 方法的语法如下：</p> <pre><code class="prism language-python"><span class="token keyword">def</span> <span class="token function">pencolor</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">)</span>
+</code></pre> <p>args 参数为可变参数，可以是一个颜色字符串 (可以使用英文颜色或者十六进制颜色值，常用的颜色字符串如下图所示)，也可以是三个取值范围在 0~cmode 之间的数值 (如 1.0,0.5,0.5，分别代表 r,g,b 的值)，还可以是一个取值范围相同的包括 3 个数值元素 (取值范围在 0-~cmode) 的元组 (如(1.0,0.5,0.5)，分别代表 r,g,b 的值)。关于颜色的具体取值请参见 <a href="https://blog.csdn.net/xw1680/article/details/111936721">全网最细海龟 (turtle) 画图讲解 (二)：窗口控制</a> 一文中的 1.3 设置窗口的背景颜色 小节。例如，使用 pencolor() 方法设置画笔颜色为红色，并且让海龟向前移动 100 像素，可以使用下面的代码：</p> <pre><code class="prism language-python"><span class="token comment"># -*- coding: UTF-8 -*-</span>
+<span class="token triple-quoted-string string">"""
+@author:AmoXiang
+@file:3.设置画笔样式.py
+@time:2020/12/29
+"""</span>
+
+<span class="token keyword">import</span> turtle  <span class="token comment"># 导入海龟绘图模块</span>
+
+<span class="token comment"># turtle.pencolor("red")</span>
+<span class="token comment"># turtle.pencolor(1, 0, 0)</span>
+turtle<span class="token punctuation">.</span>colormode<span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span>  <span class="token comment"># 设置颜色模式</span>
+turtle<span class="token punctuation">.</span>pencolor<span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>done<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 海龟绘图程序的结束语句（开始主程序）	</span>
+</code></pre> <p>程序运行结果如下：<br> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F20201229234232161.png%3Fx-oss-process%3Dimage%2Fwatermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h3MTY4MA%3D%3D%2Csize_16%2Ccolor_FFFFFF%2Ct_70&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="在这里插入图片描述"></p> </li>
+          <li> <p>color() 方法：用于获取或修改画笔的颜色，整个画笔的形状均为所设置的颜色。color() 方法的语法如下：</p> <pre><code class="prism language-python"><span class="token keyword">def</span> <span class="token function">color</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">)</span>
+</code></pre> <p>args 参数值可以设置为与 pencolor() 方法的完全相同，这里将不再赘述。也可以设置两种颜色，分别用于指定轮廓颜色和填充颜色。例如，<code>turtle.color("red", "yellow")</code> 表示轮廓颜色为红色，填充颜色为黄色。例如，使用 color() 方法设置画笔颜色为红色，并且让海龟向前移动 100 像素，可以使用下面的代码：</p> <pre><code class="prism language-python"><span class="token keyword">import</span> turtle  <span class="token comment"># 导入海龟绘图模块</span>
+
+turtle<span class="token punctuation">.</span>color<span class="token punctuation">(</span><span class="token string">"red"</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>done<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 海龟绘图程序的结束语句（开始主程序）</span>
+</code></pre> <p>程序运行结果如下：<br> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F20201229234936942.png%3Fx-oss-process%3Dimage%2Fwatermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h3MTY4MA%3D%3D%2Csize_16%2Ccolor_FFFFFF%2Ct_70&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="在这里插入图片描述"></p> </li>
+         </ol> 
+         <h2><a id="13__78"></a>1.3 落笔与抬笔</h2> 
+         <p>本小节我们先来画两条不同颜色的平行线。要实现该功能需要进行以下几步的操作：<br> 设置画笔颜色 ⇒ 绘制第一条直线 ⇒ 向左旋转90° ⇒ 移动一段距离 ⇒ 再向左旋转90° ⇒ 设置画笔颜色 ⇒ 绘制第二条直线。<br> 根据以上分析编写的代码如下：</p> 
+         <pre><code class="prism language-python"><span class="token keyword">import</span> turtle  <span class="token comment"># 导入海龟绘图模块</span>
+
+turtle<span class="token punctuation">.</span>color<span class="token punctuation">(</span><span class="token string">"red"</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span>  <span class="token comment"># 画一条红色的线</span>
+turtle<span class="token punctuation">.</span>left<span class="token punctuation">(</span><span class="token number">90</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span>  <span class="token comment"># 画一条红色的线</span>
+turtle<span class="token punctuation">.</span>left<span class="token punctuation">(</span><span class="token number">90</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>color<span class="token punctuation">(</span><span class="token string">"green"</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span>  <span class="token comment"># 画一条绿色的线</span>
+turtle<span class="token punctuation">.</span>done<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 海龟绘图程序的结束语句（开始主程序）</span>
+</code></pre> 
+         <p>程序运行结果如下：<br> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F2020122923581623.png%3Fx-oss-process%3Dimage%2Fwatermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h3MTY4MA%3D%3D%2Csize_16%2Ccolor_FFFFFF%2Ct_70&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="在这里插入图片描述"><br> 从上图可以看出，并没实现想要的绘制两条平行线。这是因为在移动海龟时，默认会留下“足迹”。如果有时只想实现移动，而不想画线，那么需要设置画笔的抬起(简称抬笔)和落下(简称落笔)的状态。当抬笔时不画线，落笔时再画线。实现抬笔功能时，可以使用下面 3 种方法：</p> 
+         <ol>
+          <li>turtle.penup()</li>
+          <li>turtle.pu()</li>
+          <li>turtle.up()</li>
+         </ol> 
+         <p>这三种方法的功能是一样的，使用哪种方法都可以。实现落笔功能时，可以使用下面 3 种方法：</p> 
+         <ol>
+          <li>turtle.pendown()</li>
+          <li>turtle.pd()</li>
+          <li>turtle.down() 同理，这三种方法功能都是一样的，使用哪种方法都可以。</li>
+         </ol> 
+         <p>首先导入海龟绘图模块，并且画一条红线，然后逆时针旋转 90 度，并且设置抬笔，再移动 30 像素，并且逆时针旋转 90 度，最后设置落笔，并且画一条绿色的线，代码如下：</p> 
+         <pre><code class="prism language-python"><span class="token keyword">import</span> turtle  <span class="token comment"># 导入海龟绘图模块</span>
+
+turtle<span class="token punctuation">.</span>color<span class="token punctuation">(</span><span class="token string">"red"</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span>  <span class="token comment"># 画一条红色的线</span>
+turtle<span class="token punctuation">.</span>left<span class="token punctuation">(</span><span class="token number">90</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>penup<span class="token punctuation">(</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span>  <span class="token comment"># 向上移动30像素</span>
+turtle<span class="token punctuation">.</span>left<span class="token punctuation">(</span><span class="token number">90</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>pendown<span class="token punctuation">(</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>color<span class="token punctuation">(</span><span class="token string">"green"</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span>  <span class="token comment"># 画一条绿色的线</span>
+turtle<span class="token punctuation">.</span>done<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 海龟绘图程序的结束语句（开始主程序）</span>
+</code></pre> 
+         <p>程序运行结果如下：<br> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F2020123000103774.png%3Fx-oss-process%3Dimage%2Fwatermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h3MTY4MA%3D%3D%2Csize_16%2Ccolor_FFFFFF%2Ct_70&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="在这里插入图片描述"><br> 海龟绘图还提供了判断画笔是否落下的 turtle.isdown() 方法，当画笔落下时该方法返回 True，抬起时返回 False。例如，想要实现当画笔状态为落笔状态时设置为抬笔，可以使用下面的代码：</p> 
+         <pre><code class="prism language-python"><span class="token keyword">if</span> turtle<span class="token punctuation">.</span>isdown<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    turtle<span class="token punctuation">.</span>penup<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 抬笔</span>
+</code></pre> 
+         <h2><a id="14__128"></a>1.4 设置线条粗细</h2> 
+         <p>在海龟绘图中，默认的线条粗细为 1 像素。如果想改变线条粗细，可以通过以下两个方法中的任意一个实现：</p> 
+         <pre><code class="prism language-python">turtle<span class="token punctuation">.</span>pensize<span class="token punctuation">(</span>width<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>width<span class="token punctuation">(</span>width<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+</code></pre> 
+         <p>其中，width 为可选参数，如果不指定，则获取当前画笔的粗细，否则使用设置的值改变画笔的粗细。例如，修改上面的实例，将第二条绿色的线的粗细设置 5 像素。修改后的代码如下：</p> 
+         <pre><code class="prism language-python"><span class="token keyword">import</span> turtle  <span class="token comment"># 导入海龟绘图模块</span>
+
+turtle<span class="token punctuation">.</span>color<span class="token punctuation">(</span><span class="token string">"red"</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span>  <span class="token comment"># 画一条红色的线</span>
+turtle<span class="token punctuation">.</span>left<span class="token punctuation">(</span><span class="token number">90</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>penup<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 抬笔</span>
+turtle<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span>  <span class="token comment"># 向上移动30像素</span>
+turtle<span class="token punctuation">.</span>left<span class="token punctuation">(</span><span class="token number">90</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>pendown<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 落笔</span>
+turtle<span class="token punctuation">.</span>width<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>  <span class="token comment"># 设置线的粗细为5像素</span>
+turtle<span class="token punctuation">.</span>color<span class="token punctuation">(</span><span class="token string">"green"</span><span class="token punctuation">)</span>
+turtle<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span>  <span class="token comment"># 画一条绿色的线</span>
+turtle<span class="token punctuation">.</span>done<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 海龟绘图程序的结束语句（开始主循环）</span>
+</code></pre> 
+         <p>修改后的程序运行效果如下图所示：<br> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F20201230002728558.png%3Fx-oss-process%3Dimage%2Fwatermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h3MTY4MA%3D%3D%2Csize_16%2Ccolor_FFFFFF%2Ct_70&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="在这里插入图片描述"><br> 从上图中可以看出，设置线的粗细后，海龟的光标还是原来的大小，如果想要改变其大小，可以在设置线的粗细之前使用代码 <code>turtle.resizemode("auto")</code> 设置改变模式为自动。修改后的代码运行效果如下图所示。<br> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F20201230003052130.png%3Fx-oss-process%3Dimage%2Fwatermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h3MTY4MA%3D%3D%2Csize_16%2Ccolor_FFFFFF%2Ct_70&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="在这里插入图片描述"></p> 
+         <h2><a id="15__154"></a>1.5 隐藏与显示海龟光标</h2> 
+         <p>在默认情况下采用海龟绘图时，会显示海龟光标。例如，已经通过 shape() 方法将当前的光标样式设置为 turtle(海龟)。那么在绘图时，可以看见屏幕上有一只缓慢爬行的小海龟。对于此种情况，在绘制复杂图形时，势必会影响速度。因此，海龟绘图提供了以下隐藏或显示海龟光标的方法。</p> 
+         <ol>
+          <li>showturtle() 或者 st() 方法：用于显示海龟光标。这两种方法任选其一即可。</li>
+          <li>hideturtle() 或者 ht() 方法：用于隐藏海龟光标。这两种方法任选其一即可。</li>
+          <li>isvisible() 方法：用于判断海龟光标是否可见。</li>
+         </ol> 
+         <p>例如，在默认情况下，让海龟向前爬行 100 像素，再隐藏海龟光标，并且让海龟向下爬行 100 像素，代码如下：</p> 
+         <pre><code class="prism language-python"><span class="token keyword">import</span> turtle  <span class="token comment"># 导入海龟绘图模块</span>
+
+turtle<span class="token punctuation">.</span>shape<span class="token punctuation">(</span><span class="token string">"turtle"</span><span class="token punctuation">)</span>  <span class="token comment"># 改变海龟光标的形状为海龟</span>
+turtle<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>  <span class="token comment"># 向前爬行100像素</span>
+turtle<span class="token punctuation">.</span>right<span class="token punctuation">(</span><span class="token number">90</span><span class="token punctuation">)</span>  <span class="token comment"># 顺时针旋转90度</span>
+turtle<span class="token punctuation">.</span>hideturtle<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 隐藏海龟光标</span>
+turtle<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>  <span class="token comment"># 向下爬行100像素</span>
+turtle<span class="token punctuation">.</span>done<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 海龟绘图程序的结束语句（开始主循环）</span>
+</code></pre> 
+         <p>程序运行结果如下：<br> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F20201230004506248.gif&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="在这里插入图片描述"></p> 
+         <h2><a id="16__174"></a>1.6 设置画笔的速度</h2> 
+         <p>在海龟绘图时，默认是有绘制的动画效果的，并且速度的快慢可以通过 speed() 方法进行调整。speed() 方法的语法如下：</p> 
+         <pre><code class="prism language-python"><span class="token keyword">def</span> <span class="token function">speed</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> s<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</code></pre> 
+         <p>其中，参数 speed 为可选参数，如果不指定，则获取当前的画笔速度。如果指定，需要将值设置为 0~10 之间的整数或速度字符串。速度字符串有 fastest (最快)、fast (快)、normal (正常)、slow (慢)、slowest (最慢)。当设置速度值时，0表示最快，1表示最慢，然后逐渐加快。</p> 
+         <p>注意：speed=0 表示没有动画效果。forward()/back() 方法将使海龟向前 / 向后跳跃，同样的 left()/right() 方法将使海龟立即改变朝向。</p> 
+         <p>例如，将画笔的速度设置为最快，代码如下：</p> 
+         <pre><code class="prism language-python">turtle<span class="token punctuation">.</span>speed<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>  <span class="token comment"># 设置画笔的速度，0为最快</span>
+</code></pre> 
+         <p>将画笔的速度设置为正常，代码如下：</p> 
+         <pre><code class="prism language-python">turtle<span class="token punctuation">.</span>speed<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>  <span class="token comment"># 设置画笔的速度，6为正常</span>
+</code></pre> 
+        </div> 
+        <link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/markdown_views-22a2fefd3b.css" rel="stylesheet"> 
+        <link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/style-4f8fbf9108.css" rel="stylesheet"> 
+       </div> 
+       <div id="treeSkill"></div> 
+      </article>  
+     </div> 
+     <div class="more-toolbox-new" id="toolBarBox"> 
+      <div class="left-toolbox"> 
+       <div class="toolbox-left"> 
+        <div class="profile-box">
+         <a class="profile-href" target="_blank" href="https://blog.csdn.net/xw1680"><img class="profile-img" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fprofile.csdnimg.cn%2F8%2F9%2F7%2F3_xw1680&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825"><span class="profile-name">Amo Xiang</span></a>
+        </div> 
+        <div class="profile-attend"> 
+         <a class="tool-attend tool-bt-button tool-unbt-attend" href="javascript:;" data-report-view="{&quot;mod&quot;:&quot;1592215036_002&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4232&quot;,&quot;extend1&quot;:&quot;已关注&quot;}">已关注</a> 
+         <a class="tool-item-follow active-animation" style="display:none;">关注</a> 
+        </div> 
+       </div> 
+       <div class="toolbox-middle">  
+       </div> 
+       <div class="toolbox-right"> 
+        <div class="tool-directory"> 
+         <a class="bt-columnlist-show" data-id="11669360" data-free="false" data-subscribe="false" data-title="全网最细海龟 (turtle) 画图讲解" data-img="https://img-blog.csdnimg.cn/b7e1ebd061994c9b8b08efde1b62b59d.png?x-oss-process=image/resize,m_fixed,h_224,w_224" data-url="https://blog.csdn.net/xw1680/category_11669360.html" data-sum="11" data-people="12" data-price="39.90" data-oldprice="99.00" data-join="true" data-studyvip="true" data-studysubscribe="true" data-report-view="{&quot;spm&quot;:&quot;1001.2101.3001.6334&quot;,&quot;extend1&quot;:&quot;专栏目录&quot;}" data-report-click="{&quot;spm&quot;:&quot;1001.2101.3001.6334&quot;,&quot;extend1&quot;:&quot;专栏目录&quot;}">专栏目录</a> 
+        </div> 
+        <div class="tool-column"> 
+         <a class="tool-bt-button tool-unbt-subscribe" style="min-width:84px" href="javascript:;" data-report-view="{&quot;mod&quot;:&quot;1592215036_001&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4405&quot;,&quot;extend1&quot;:&quot;已订阅&quot;}" data-report-click="{&quot;mod&quot;:&quot;1592215036_001&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4405&quot;,&quot;extend1&quot;:&quot;已订阅&quot;}">会员已订阅</a> 
+        </div> 
+       </div> 
+      </div> 
+     </div>        
+     <a id="commentBox" name="commentBox"></a>   
+     <div id="recommendNps" class="recommend-nps-box common-nps-box"> 
+      <h3 class="aside-title">“相关推荐”对你有帮助么？</h3> 
+      <div class="aside-content"> 
+       <ul class="newnps-list"> 
+        <li class="newnps-item" data-type="非常没帮助"> 
+         <div class="newnps-img-box"> 
+          <img class="newnps-img active" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FnpsFeel1.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+          <img class="newnps-img default" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FnpsFeelGrey1.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+         </div> 
+         <div class="newnps-text">
+          非常没帮助
+         </div> </li> 
+        <li class="newnps-item" data-type="没帮助"> 
+         <div class="newnps-img-box"> 
+          <img class="newnps-img active" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FnpsFeel2.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+          <img class="newnps-img default" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FnpsFeelGrey2.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+         </div> 
+         <div class="newnps-text">
+          没帮助
+         </div> </li> 
+        <li class="newnps-item" data-type="一般"> 
+         <div class="newnps-img-box"> 
+          <img class="newnps-img active" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FnpsFeel3.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+          <img class="newnps-img default" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FnpsFeelGrey3.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+         </div> 
+         <div class="newnps-text">
+          一般
+         </div> </li> 
+        <li class="newnps-item" data-type="有帮助"> 
+         <div class="newnps-img-box"> 
+          <img class="newnps-img active" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FnpsFeel4.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+          <img class="newnps-img default" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FnpsFeelGrey4.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+         </div> 
+         <div class="newnps-text">
+          有帮助
+         </div> </li> 
+        <li class="newnps-item" data-type="非常有帮助"> 
+         <div class="newnps-img-box"> 
+          <img class="newnps-img active" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FnpsFeel5.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+          <img class="newnps-img default" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FnpsFeelGrey5.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+         </div> 
+         <div class="newnps-text">
+          非常有帮助
+         </div> </li> 
+       </ul> 
+       <div class="newnps-form-box"> 
+        <div class="newnps-form"> 
+         <input type="text" placeholder="请输入建议或反馈后点击提交" class="newnps-input"> 
+         <span class="newnps-btn">提交</span> 
+        </div> 
+       </div> 
+      </div> 
+     </div>     
+    </main>     
+   </div> 
+   <div class="recommend-right align-items-stretch clearfix" id="rightAside" data-type="recommend"> 
+    <aside class="recommend-right_aside"> 
+     <div id="recommend-right"> 
+      <div class="flex-column aside-box groupfile" id="groupfile"> 
+       <div class="groupfile-div"> 
+        <h3 class="aside-title">目录</h3> 
+        <div class="align-items-stretch group_item"> 
+         <div class="pos-box"> 
+          <div class="scroll-box"> 
+           <div class="toc-box"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="aside-box kind_person d-flex flex-column"> 
+       <h3 class="aside-title">分类专栏</h3> 
+       <div class="align-items-stretch kindof_item" id="kind_person_column"> 
+        <div class="aside-content"> 
+         <ul> 
+          <li> <a class="clearfix special-column-name" target="_blank" href="https://blog.csdn.net/xw1680/category_11639863.html" data-report-click="{&quot;mod&quot;:&quot;popu_826&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4230&quot;,&quot;strategy&quot;:&quot;pc付费专栏左侧入口&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/xw1680/category_11639863.html&quot;,&quot;ab&quot;:&quot;new&quot;}"> 
+            <div class="special-column-bar "></div> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2Fc2a172e53cd94d2ca34532345e484e78.png%3Fx-oss-process%3Dimage%2Fresize%2Cm_fixed%2Ch_64%2Cw_64&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'"> <span class=""> Python3入门与进阶 </span> <span class="pay-tag">付费</span> </a> <span class="special-column-num">129篇</span> </li> 
+          <li> <a class="clearfix special-column-name" target="_blank" href="https://blog.csdn.net/xw1680/category_10948338.html" data-report-click="{&quot;mod&quot;:&quot;popu_826&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4230&quot;,&quot;strategy&quot;:&quot;pc付费专栏左侧入口&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/xw1680/category_10948338.html&quot;,&quot;ab&quot;:&quot;new&quot;}"> 
+            <div class="special-column-bar "></div> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F202104042204270.jpg%3Fx-oss-process%3Dimage%2Fresize%2Cm_fixed%2Ch_64%2Cw_64&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'"> <span class=""> 大数据开发 </span> <span class="pay-tag">付费</span> </a> <span class="special-column-num">27篇</span> </li> 
+          <li> <a class="clearfix special-column-name" target="_blank" href="https://blog.csdn.net/xw1680/category_11669360.html" data-report-click="{&quot;mod&quot;:&quot;popu_826&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4230&quot;,&quot;strategy&quot;:&quot;pc付费专栏左侧入口&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/xw1680/category_11669360.html&quot;,&quot;ab&quot;:&quot;new&quot;}"> 
+            <div class="special-column-bar "></div> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2Fb7e1ebd061994c9b8b08efde1b62b59d.png%3Fx-oss-process%3Dimage%2Fresize%2Cm_fixed%2Ch_64%2Cw_64&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'"> <span class=""> 全网最细海龟 (turtle) 画图讲解 </span> <span class="pay-tag">付费</span> </a> <span class="special-column-num">11篇</span> </li> 
+          <li> <a class="clearfix special-column-name" target="_blank" href="https://blog.csdn.net/xw1680/category_10846044.html" data-report-click="{&quot;mod&quot;:&quot;popu_826&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4230&quot;,&quot;strategy&quot;:&quot;pc付费专栏左侧入口&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/xw1680/category_10846044.html&quot;,&quot;ab&quot;:&quot;new&quot;}"> 
+            <div class="special-column-bar "></div> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F20210313010236888.jpg%3Fx-oss-process%3Dimage%2Fresize%2Cm_fixed%2Ch_64%2Cw_64&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'"> <span class=""> SQLServer----适合在校大学生 </span> <span class="pay-tag">付费</span> </a> <span class="special-column-num">14篇</span> </li> 
+          <li> <a class="clearfix special-column-name" target="_blank" href="https://blog.csdn.net/xw1680/category_11894175.html" data-report-click="{&quot;mod&quot;:&quot;popu_537&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4137&quot;,&quot;strategy&quot;:&quot;pc付费专栏左侧入口&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/xw1680/category_11894175.html&quot;,&quot;ab&quot;:&quot;new&quot;}"> 
+            <div class="special-column-bar "></div> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2Ff5ccb9f6d6b54d8eb2aad36aebacbc18.jpeg%3Fx-oss-process%3Dimage%2Fresize%2Cm_fixed%2Ch_64%2Cw_64&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'"> <span class=""> Python3高级核心技术 </span> </a> <span class="special-column-num">5篇</span> </li> 
+          <li> <a class="clearfix special-column-name" target="_blank" href="https://blog.csdn.net/xw1680/category_12004417.html" data-report-click="{&quot;mod&quot;:&quot;popu_537&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4137&quot;,&quot;strategy&quot;:&quot;pc付费专栏左侧入口&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/xw1680/category_12004417.html&quot;,&quot;ab&quot;:&quot;new&quot;}"> 
+            <div class="special-column-bar "></div> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F20201014180756754.png%3Fx-oss-process%3Dimage%2Fresize%2Cm_fixed%2Ch_64%2Cw_64&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'"> <span class=""> 感悟 </span> </a> </li> 
+          <li> <a class="clearfix special-column-name" target="_blank" href="https://blog.csdn.net/xw1680/category_12007675.html" data-report-click="{&quot;mod&quot;:&quot;popu_537&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4137&quot;,&quot;strategy&quot;:&quot;pc付费专栏左侧入口&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/xw1680/category_12007675.html&quot;,&quot;ab&quot;:&quot;new&quot;}"> 
+            <div class="special-column-bar "></div> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F20201014180756780.png%3Fx-oss-process%3Dimage%2Fresize%2Cm_fixed%2Ch_64%2Cw_64&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'"> <span class=""> Scrapy 框架 </span> </a> <span class="special-column-num">3篇</span> </li> 
+          <li> <a class="clearfix special-column-name" target="_blank" href="https://blog.csdn.net/xw1680/category_11991768.html" data-report-click="{&quot;mod&quot;:&quot;popu_537&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4137&quot;,&quot;strategy&quot;:&quot;pc付费专栏左侧入口&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/xw1680/category_11991768.html&quot;,&quot;ab&quot;:&quot;new&quot;}"> 
+            <div class="special-column-bar "></div> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F20201014180756923.png%3Fx-oss-process%3Dimage%2Fresize%2Cm_fixed%2Ch_64%2Cw_64&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'"> <span class=""> 开发环境搭建合集 </span> </a> <span class="special-column-num">3篇</span> </li> 
+          <li> <a class="clearfix special-column-name" target="_blank" href="https://blog.csdn.net/xw1680/category_11947657.html" data-report-click="{&quot;mod&quot;:&quot;popu_537&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4137&quot;,&quot;strategy&quot;:&quot;pc付费专栏左侧入口&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/xw1680/category_11947657.html&quot;,&quot;ab&quot;:&quot;new&quot;}"> 
+            <div class="special-column-bar "></div> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2Fd3403d6edab4475e8bf86a67d52853b4.jpeg%3Fx-oss-process%3Dimage%2Fresize%2Cm_fixed%2Ch_64%2Cw_64&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'"> <span class=""> 安卓逆向 </span> </a> <span class="special-column-num">10篇</span> </li> 
+          <li> <a class="clearfix special-column-name" target="_blank" href="https://blog.csdn.net/xw1680/category_11980167.html" data-report-click="{&quot;mod&quot;:&quot;popu_537&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4137&quot;,&quot;strategy&quot;:&quot;pc付费专栏左侧入口&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/xw1680/category_11980167.html&quot;,&quot;ab&quot;:&quot;new&quot;}"> 
+            <div class="special-column-bar "></div> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F20201014180756930.png%3Fx-oss-process%3Dimage%2Fresize%2Cm_fixed%2Ch_64%2Cw_64&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'"> <span class=""> Solution </span> </a> <span class="special-column-num">1篇</span> </li> 
+          <li> <a class="clearfix special-column-name" target="_blank" href="https://blog.csdn.net/xw1680/category_11802527.html" data-report-click="{&quot;mod&quot;:&quot;popu_537&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4137&quot;,&quot;strategy&quot;:&quot;pc付费专栏左侧入口&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/xw1680/category_11802527.html&quot;,&quot;ab&quot;:&quot;new&quot;}"> 
+            <div class="special-column-bar "></div> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F4266be41f75f45e9856799de3bbcb3cd.png%3Fx-oss-process%3Dimage%2Fresize%2Cm_fixed%2Ch_64%2Cw_64&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'"> <span class=""> JS逆向 </span> </a> <span class="special-column-num">9篇</span> </li> 
+          <li> <a class="clearfix special-column-name" target="_blank" href="https://blog.csdn.net/xw1680/category_11649896.html" data-report-click="{&quot;mod&quot;:&quot;popu_537&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4137&quot;,&quot;strategy&quot;:&quot;pc付费专栏左侧入口&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/xw1680/category_11649896.html&quot;,&quot;ab&quot;:&quot;new&quot;}"> 
+            <div class="special-column-bar "></div> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F20201014180756757.png%3Fx-oss-process%3Dimage%2Fresize%2Cm_fixed%2Ch_64%2Cw_64&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'"> <span class=""> 机器学习 </span> </a> <span class="special-column-num">1篇</span> </li> 
+          <li> <a class="clearfix special-column-name" target="_blank" href="https://blog.csdn.net/xw1680/category_10781762.html" data-report-click="{&quot;mod&quot;:&quot;popu_537&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4137&quot;,&quot;strategy&quot;:&quot;pc付费专栏左侧入口&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/xw1680/category_10781762.html&quot;,&quot;ab&quot;:&quot;new&quot;}"> 
+            <div class="special-column-bar "></div> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F23637776d1bc485489d44d487bb2b7cb.png%3Fx-oss-process%3Dimage%2Fresize%2Cm_fixed%2Ch_64%2Cw_64&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'"> <span class=""> docker 核心技术原理及其应用 </span> </a> <span class="special-column-num">5篇</span> </li> 
+          <li> <a class="clearfix special-column-name" target="_blank" href="https://blog.csdn.net/xw1680/category_11103939.html" data-report-click="{&quot;mod&quot;:&quot;popu_537&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4137&quot;,&quot;strategy&quot;:&quot;pc付费专栏左侧入口&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/xw1680/category_11103939.html&quot;,&quot;ab&quot;:&quot;new&quot;}"> 
+            <div class="special-column-bar "></div> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F22c53d019c2e497fb4c80823d29895de.jpg%3Fx-oss-process%3Dimage%2Fresize%2Cm_fixed%2Ch_64%2Cw_64&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'"> <span class=""> OpenCV入门到进阶 </span> </a> <span class="special-column-num">1篇</span> </li> 
+          <li> <a class="clearfix special-column-name" target="_blank" href="https://blog.csdn.net/xw1680/category_10809156.html" data-report-click="{&quot;mod&quot;:&quot;popu_537&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4137&quot;,&quot;strategy&quot;:&quot;pc付费专栏左侧入口&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/xw1680/category_10809156.html&quot;,&quot;ab&quot;:&quot;new&quot;}"> 
+            <div class="special-column-bar "></div> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F20210319120701281.jpeg%3Fx-oss-process%3Dimage%2Fresize%2Cm_fixed%2Ch_64%2Cw_64&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'"> <span class=""> C 语言学习笔记 </span> </a> <span class="special-column-num">3篇</span> </li> 
+          <li> <a class="clearfix special-column-name" target="_blank" href="https://blog.csdn.net/xw1680/category_9225509.html" data-report-click="{&quot;mod&quot;:&quot;popu_537&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4137&quot;,&quot;strategy&quot;:&quot;pc付费专栏左侧入口&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/xw1680/category_9225509.html&quot;,&quot;ab&quot;:&quot;new&quot;}"> 
+            <div class="special-column-bar "></div> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fimg-blog.csdnimg.cn%2F2a088952000941d8b705635a62751335.jpg%3Fx-oss-process%3Dimage%2Fresize%2Cm_fixed%2Ch_64%2Cw_64&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'"> <span class=""> JavaScript </span> </a> <span class="special-column-num">7篇</span> </li> 
+         </ul> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </aside> 
+   </div> 
+   <div class="recommend-right1  align-items-stretch clearfix" id="rightAsideConcision" data-type="recommend"> 
+    <aside class="recommend-right_aside"> 
+     <div id="recommend-right-concision"> 
+      <div class="flex-column aside-box groupfile" id="groupfileConcision"> 
+       <div class="groupfile-div1"> 
+        <h3 class="aside-title">目录</h3> 
+        <div class="align-items-stretch group_item"> 
+         <div class="pos-box"> 
+          <div class="scroll-box"> 
+           <div class="toc-box"></div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </aside> 
+   </div> 
+  </div> 
+  <div class="mask-dark"></div>  
+  <div class="skin-boxshadow"></div> 
+  <div class="directory-boxshadow"></div> 
+  <div class="comment-side-box-shadow comment-side-tit-close" id="commentSideBoxshadow"> 
+   <div class="comment-side-content"> 
+    <div class="comment-side-tit"> 
+     <div class="comment-side-tit-count">
+      评论&nbsp;
+      <span class="count">11</span>
+     </div> 
+     <img class="comment-side-tit-close" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FcloseBt.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825">
+    </div>  
+    <div id="pcFlodCommentSideBox" class="pc-flodcomment-sidebox"> 
+     <div class="comment-fold-tit">
+      <span id="lookUnFlodComment" class="back"><img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FcommentArrowLeftWhite.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""></span>被折叠的&nbsp;
+      <span class="count"></span>&nbsp;条评论 
+      <a href="https://blogdev.blog.csdn.net/article/details/122245662" class="tip" target="_blank">为什么被折叠?</a> 
+      <a href="https://bbs.csdn.net/forums/FreeZone" class="park" target="_blank"> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FiconPark.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825">到【灌水乐园】发言</a> 
+     </div> 
+     <div class="comment-fold-content"></div> 
+     <div id="lookBadComment" class="look-bad-comment side-look-comment"> 
+      <a class="look-more-comment">查看更多评论<img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FcommentArrowDownWhite.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""></a> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div id="rewardNew" class="reward-popupbox-new"> 
+   <p class="rewad-title">打赏作者<span class="reward-close"><img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FcloseBt.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825"></span></p> 
+   <dl class="profile-box"> 
+    <dd> 
+     <a href="https://blog.csdn.net/xw1680" data-report-click="{&quot;mod&quot;:&quot;popu_379&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/xw1680&quot;,&quot;ab&quot;:&quot;new&quot;}"> <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fprofile.csdnimg.cn%2F8%2F9%2F7%2F3_xw1680&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" class="avatar_pic"> </a> 
+    </dd> 
+    <dt> 
+     <p class="blog-name">Amo Xiang</p> 
+     <p class="blog-discript">你的鼓励将是我创作的最大动力</p> 
+    </dt> 
+   </dl> 
+   <div class="reward-box-new"> 
+    <div class="reward-content">
+     <div class="reward-right"></div>
+    </div> 
+   </div> 
+   <div class="money-box"> 
+    <span class="choose-money choosed" data-id="2">¥2</span> 
+    <span class="choose-money " data-id="4">¥4</span> 
+    <span class="choose-money " data-id="6">¥6</span> 
+    <span class="choose-money " data-id="10">¥10</span> 
+    <span class="choose-money " data-id="20">¥20</span> 
+    <input id="customizeMoney" class="customize-money" name="" type="" value="" placeholder="自定义"> 
+    <div class="customize-tip">
+     输入1-500的整数
+    </div> 
+   </div> 
+   <div class="pay-box"> 
+    <div class="pay-type-blance pay-type active" data-type="blance"> 
+     <img class="unchoose" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FnewUnChoose.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+     <img class="choose" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FnewChoose.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+     <span class="pay-type-name">余额支付</span> 
+     <span class="pay-type-num">(余额：-- )</span> 
+    </div> 
+    <div class="pay-type-money pay-type" data-type="money"> 
+     <img class="unchoose" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FnewUnChoose.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+     <img class="choose" src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FnewChoose.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+     <span class="pay-type-name">扫码支付</span> 
+    </div> 
+   </div> 
+   <div class="sure-box"> 
+    <div class="sure-box-money"> 
+     <div class="code-box"> 
+      <div class="code-num-box"> 
+       <span class="code-name">扫码支付：</span>
+       <span class="code-num">¥2</span> 
+      </div> 
+      <div class="code-img-box"> 
+       <div class="renovate"> 
+        <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2Fpay-time-out.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825"> 
+        <span>获取中</span> 
+       </div> 
+      </div> 
+      <div class="code-pay-box"> 
+       <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FnewWeiXin.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+       <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2FnewZhiFuBao.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+       <span>扫码支付</span> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="sure-box-blance"> 
+     <p class="tip">您的余额不足，请更换扫码支付或<a target="_blank" data-report-click="{&quot;mod&quot;:&quot;1597646289_003&quot;,&quot;spm&quot;:&quot;1001.2101.3001.4302&quot;}" href="https://i.csdn.net/#/wallet/balance/recharge?utm_source=RewardVip" class="go-invest">充值</a></p> 
+     <p class="is-have-money"><a class="reward-sure">打赏作者</a></p> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="pay-code"> 
+   <div class="pay-money">
+    实付
+    <span class="pay-money-span" data-nowprice="" data-oldprice="">元</span>
+   </div> 
+   <div class="content-blance">
+    <a class="blance-bt" href="javascript:;">使用余额支付</a>
+   </div> 
+   <div class="content-code"> 
+    <div id="payCode" data-id=""> 
+     <div class="renovate"> 
+      <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2Fpay-time-out.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825"> 
+      <span>点击重新获取</span> 
+     </div> 
+    </div> 
+    <div class="pay-style">
+     <span><img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2Fweixin.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825"></span>
+     <span><img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2Fzhifubao.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825"></span>
+     <span><img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2Fjingdong.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825"></span>
+     <span class="text">扫码支付</span>
+    </div> 
+   </div> 
+   <div class="bt-close">
+    <svg t="1567152543821" class="icon" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="10924" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="12">
+     <defs>
+      <style type="text/css"></style>
+     </defs>
+     <path d="M512 438.378667L806.506667 143.893333a52.032 52.032 0 1 1 73.6 73.621334L585.621333 512l294.485334 294.485333a52.074667 52.074667 0 0 1-73.6 73.642667L512 585.621333 217.514667 880.128a52.053333 52.053333 0 1 1-73.621334-73.642667L438.378667 512 143.893333 217.514667a52.053333 52.053333 0 1 1 73.621334-73.621334L512 438.378667z" fill="" p-id="10925"></path>
+    </svg>
+   </div> 
+   <!-- <p style="margin-top: 8px;font-size: 14px;" class="text-center">支付成功即可阅读</p> --> 
+   <div class="pay-balance"> 
+    <input type="radio" class="pay-code-radio" data-type="details"> 
+    <span class="span">钱包余额</span> 
+    <span class="balance" style="color:#FC5531;font-size:14px;">0</span> 
+    <div class="pay-code-tile"> 
+     <img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2Fpay-help.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""> 
+     <div class="pay-code-content"> 
+      <div class="span"> 
+       <p class="title">抵扣说明：</p> 
+       <p> 1.余额是钱包充值的虚拟货币，按照1:1的比例进行支付金额的抵扣。<br> 2.余额无法直接购买下载，可以购买VIP、C币套餐、付费专栏及课程。</p> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <a class="pay-balance-con" href="https://i.csdn.net/#/wallet/balance/recharge" target="_blank"><img src="https://pucsdn.com//main/csdn/img?url=https%3A%2F%2Fcsdnimg.cn%2Frelease%2Fblogv2%2Fdist%2Fpc%2Fimg%2Frecharge.png&amp;rfUrl=https%3A%2F%2Fblog.csdn.net%2Fxw1680%2Farticle%2Fdetails%2F111938825" alt=""><span>余额充值</span></a> 
+  </div> 
+  <div style="display:none;">  
+  </div> 
+  <div class="keyword-dec-box" id="keywordDecBox"></div>     
+  <link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.6.12/ckeditor/plugins/codesnippet/lib/highlight/styles/atom-one-light.css">                  
+ </body>
+</html>
